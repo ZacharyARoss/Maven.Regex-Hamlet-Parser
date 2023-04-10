@@ -1,6 +1,10 @@
+
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by thook on 10/7/15.
@@ -36,4 +40,69 @@ public class HamletParser {
         return hamletData;
     }
 
+    public void changeHamletToLeon() {
+        Pattern pattern = Pattern.compile("Hamlet");
+        Matcher matcher = pattern.matcher(hamletData);
+        StringBuffer sb = new StringBuffer();
+        String replacementText = "Leon";
+        //String machedText;
+        while(matcher.find()){
+            matcher.appendReplacement(sb, replacementText);
+        }
+        matcher.appendTail(sb);
+        hamletData = matcher.appendTail(sb).toString();
+
+        pattern = Pattern.compile("HAMLET");
+        matcher = pattern.matcher(hamletData);
+        sb = new StringBuffer();
+        String replacementText2 = "LEON";
+        //String machedText2;
+        while(matcher.find()){
+            matcher.appendReplacement(sb, replacementText2);
+        }
+        matcher.appendTail(sb);
+        hamletData = matcher.appendTail(sb).toString();
+    }
+
+    public void changeHoratioToTariq() {
+        Pattern pattern = Pattern.compile("Horatio");
+        Matcher matcher = pattern.matcher(hamletData);
+        StringBuffer sb = new StringBuffer();
+        String replacementText = "Tariq";
+        //String machedText;
+        while(matcher.find()){
+            matcher.appendReplacement(sb, replacementText);
+        }
+        matcher.appendTail(sb);
+        hamletData = matcher.appendTail(sb).toString();
+
+        pattern = Pattern.compile("HORATIO");
+        matcher = pattern.matcher(hamletData);
+        sb = new StringBuffer();
+        String replacementText2 = "TARIQ";
+        //String machedText2;
+        while(matcher.find()){
+            matcher.appendReplacement(sb, replacementText2);
+        }
+        matcher.appendTail(sb);
+        hamletData = matcher.appendTail(sb).toString();
+    }
+
+    public int findHoratio() {
+        Pattern pattern = Pattern.compile("Horatio",Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(hamletData);
+        return (int) matcher.results().count();
+    }
+
+    public int findHamlet() {
+        Pattern pattern = Pattern.compile("Hamlet",Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(hamletData);
+        return (int) matcher.results().count();
+    }
+
+    public void findLeon() {
+    }
+
+    public void findTariq() {
+    }
 }
